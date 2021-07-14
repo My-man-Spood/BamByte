@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bambyte", "Bambyte\Bambyte.csproj", "{CC096A5C-53F7-4734-AA1C-9F6E6B0C2284}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bambyte", "Bambyte\Bambyte.csproj", "{CC096A5C-53F7-4734-AA1C-9F6E6B0C2284}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Babyte.Tests", "Babyte.Tests\Babyte.Tests.csproj", "{F65CBFB9-2E81-4624-9714-712FFD6C5514}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2C2FD3A4-2041-4CCF-BB31-E9D1F3162724}"
+	ProjectSection(SolutionItems) = preProject
+		Global.ruleset = Global.ruleset
+		stylecop.json = stylecop.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +23,10 @@ Global
 		{CC096A5C-53F7-4734-AA1C-9F6E6B0C2284}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC096A5C-53F7-4734-AA1C-9F6E6B0C2284}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC096A5C-53F7-4734-AA1C-9F6E6B0C2284}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F65CBFB9-2E81-4624-9714-712FFD6C5514}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F65CBFB9-2E81-4624-9714-712FFD6C5514}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F65CBFB9-2E81-4624-9714-712FFD6C5514}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F65CBFB9-2E81-4624-9714-712FFD6C5514}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
