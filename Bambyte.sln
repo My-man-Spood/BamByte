@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		stylecop.json = stylecop.json
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bambyte.Giphy", "Bambyte.Giphy\Bambyte.Giphy.csproj", "{E4A6A10E-714C-48EB-9A8E-4D46E80B26A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{F65CBFB9-2E81-4624-9714-712FFD6C5514}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F65CBFB9-2E81-4624-9714-712FFD6C5514}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F65CBFB9-2E81-4624-9714-712FFD6C5514}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4A6A10E-714C-48EB-9A8E-4D46E80B26A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4A6A10E-714C-48EB-9A8E-4D46E80B26A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4A6A10E-714C-48EB-9A8E-4D46E80B26A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4A6A10E-714C-48EB-9A8E-4D46E80B26A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
