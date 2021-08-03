@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  bambyte:
+    build:
+      dockerfile: ./docker/Dockerfile
+      context: ..
+    environment:
+      DISCORD_TOKEN: ${SECRET_DISCORD_TOKEN}
+      GIPHY_TOKEN: ${SECRET_GIPHY_TOKEN}
