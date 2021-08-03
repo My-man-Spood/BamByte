@@ -10,7 +10,10 @@ FROM mcr.microsoft.com/dotnet/runtime:5.0
 WORKDIR /app
 COPY --from=build-env /app/out .
 
-RUN cat ${DISCORD_TOKEN} > TokenDiscord.txt
-RUN cat ${GIPHY_TOKEN} > TokenGiphy.txt
+ARG DISCORD_TOKEN
+ARG GIPHY_TOKEN
 
-ENTRYPOINT ["dotnet", "Bambyte.dll"]
+RUN echo $DISCORD_TOKEN > TokenDiscord.txt
+RUN echo $GIPHY_TOKEN > TokenGiphy.txt
+
+ENTRYPOINT ["dotnet","Bambyte.dll"]

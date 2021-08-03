@@ -5,6 +5,6 @@ services:
     build:
       dockerfile: ./docker/Dockerfile
       context: ..
-    environment:
-      DISCORD_TOKEN: ${SECRET_DISCORD_TOKEN}
-      GIPHY_TOKEN: ${SECRET_GIPHY_TOKEN}
+      args:
+        - DISCORD_TOKEN=${SECRET_DISCORD_TOKEN}
+        - GIPHY_TOKEN=${SECRET_GIPHY_TOKEN}
