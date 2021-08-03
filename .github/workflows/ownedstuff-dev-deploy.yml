@@ -36,6 +36,9 @@ jobs:
         run: |
           docker-compose build
           docker save -o docker_bambyte.tar docker_bambyte
+        env:
+          SECRET_DISCORD_TOKEN: ${{ secrets.SECRET_DISCORD_TOKEN }}
+          SECRET_GIPHY_TOKEN: ${{ secrets.SECRET_GIPHY_TOKEN }}
         
       # --------------
       # Deploy part
