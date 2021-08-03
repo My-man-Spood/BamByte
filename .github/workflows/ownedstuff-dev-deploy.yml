@@ -60,7 +60,7 @@ jobs:
         uses: fifsky/ssh-action@master
         with:
           command: |
-            cd /root/Bambyte/
+            cd /root/Bambyte/docker
             docker load -i docker_bambyte.tar
             docker-compose -f docker-compose.prod.yml up --build -d
           host: ${{ secrets.OWNEDSTUFF_DEV_HOST }}
