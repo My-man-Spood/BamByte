@@ -1,0 +1,69 @@
+name: Deploy to ownedstuff.dev
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        dotnet-version: [5.0.100]
+
+    steps:
+      - uses: actions/checkout@v1
+      
+      # --------------
+      # .NET Core part
+      # --------------
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
+      - name: Run api UnitTests
+        working-directory: ./src/Babyte.Tests
+        run: dotnet test Babyte.Tests.csproj
+        
+      # --------------
+      # Docker build part
+      # --------------
+      - name: Build containers with docker-compose
+        working-directory: ./docker
+        run: |
+        docker-compose build
+        docker save -o docker_bambyte.tar docker_bambyte
+        
+      # --------------
+      # Deploy part
+      # --------------
+
+      - name: Copy docker files via ssh
+        # https://github.com/marketplace/actions/scp-files
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.OWNEDSTUFF_DEV_HOST }}
+          username: root
+          key: ${{ secrets.OWNEDSTUFF_DEV_DEPLOY }}
+          port: 22
+          source: "docker/*"
+          target: "/root/Bambyte/"
+          
+      # --------------
+      # Deploy docker image to server
+      # --------------
+      - name: Deploy docker image to server
+        # https://github.com/marketplace/actions/remote-ssh-commands
+        uses: fifsky/ssh-action@master
+        with:
+          command: |
+            cd /root/Bambyte/
+            docker load -i docker_bambyte.tar
+            docker-compose -f docker-compose.prod.yml up --build -d
+          host: ${{ secrets.OWNEDSTUFF_DEV_HOST }}
+          user: root
+          key: ${{ secrets.OWNEDSTUFF_DEV_DEPLOY }}
+          port: 22
