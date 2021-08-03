@@ -34,8 +34,8 @@ jobs:
       - name: Build containers with docker-compose
         working-directory: ./docker
         run: |
-        docker-compose build
-        docker save -o docker_bambyte.tar docker_bambyte
+          docker-compose build
+          docker save -o docker_bambyte.tar docker_bambyte
         
       # --------------
       # Deploy part
