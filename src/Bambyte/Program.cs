@@ -92,7 +92,11 @@ namespace Bambyte
         private async Task InitCommands()
         {
             // RegisterAllCommandsInAssembly
-            await commandService.AddModulesAsync(Assembly.GetEntryAssembly(), services);
+            var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+            foreach (var assembly in assemblies)
+            {
+                await commandService.AddModulesAsync(assembly, services);
+            }
 
             // BaseDiscordClient has a ton of other events to bind to
             client.MessageReceived += HandleCommandAsync;

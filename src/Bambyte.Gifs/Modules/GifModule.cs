@@ -1,9 +1,9 @@
-﻿using System.Threading.Tasks;
-using Bambyte.Gifs;
+﻿using System;
+using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 
-namespace Bambyte.Modules
+namespace Bambyte.Gifs.Modules
 {
     public class GifModule : ModuleBase<SocketCommandContext>
     {
@@ -17,7 +17,18 @@ namespace Bambyte.Modules
         [Command("gif")]
         public async Task SendGif([Remainder]string gifName)
         {
-            var url = await giphyWrapper.SearchRandomGif(gifName, true);
+            string url;
+
+            try
+            {
+                url = await giphyWrapper.SearchRandomGif(gifName, true);
+            }
+            catch (Exception)
+            {
+                url = giphyWrapper.NotFound();
+                gifName = "404";
+            }
+
             var embed = new EmbedBuilder
             {
                 Title = gifName,
