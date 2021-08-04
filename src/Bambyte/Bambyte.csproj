@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Bambyte.Gifs\Bambyte.Gifs.csproj" />
     <ProjectReference Include="..\Bambyte.Giphy\Bambyte.Giphy.csproj" />
   </ItemGroup>
 

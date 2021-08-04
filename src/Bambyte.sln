@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bambyte", "Bambyte\Bambyte.csproj", "{CC096A5C-53F7-4734-AA1C-9F6E6B0C2284}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Babyte.Tests", "Babyte.Tests\Babyte.Tests.csproj", "{F65CBFB9-2E81-4624-9714-712FFD6C5514}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Babyte.Tests", "Babyte.Tests\Babyte.Tests.csproj", "{F65CBFB9-2E81-4624-9714-712FFD6C5514}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2C2FD3A4-2041-4CCF-BB31-E9D1F3162724}"
 	ProjectSection(SolutionItems) = preProject
@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		stylecop.json = stylecop.json
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bambyte.Giphy", "Bambyte.Giphy\Bambyte.Giphy.csproj", "{E4A6A10E-714C-48EB-9A8E-4D46E80B26A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bambyte.Gifs", "Bambyte.Gifs\Bambyte.Gifs.csproj", "{8FCA3921-1E5F-467B-ABB3-6D4024AE954D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{F65CBFB9-2E81-4624-9714-712FFD6C5514}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F65CBFB9-2E81-4624-9714-712FFD6C5514}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F65CBFB9-2E81-4624-9714-712FFD6C5514}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E4A6A10E-714C-48EB-9A8E-4D46E80B26A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E4A6A10E-714C-48EB-9A8E-4D46E80B26A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E4A6A10E-714C-48EB-9A8E-4D46E80B26A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E4A6A10E-714C-48EB-9A8E-4D46E80B26A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FCA3921-1E5F-467B-ABB3-6D4024AE954D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FCA3921-1E5F-467B-ABB3-6D4024AE954D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FCA3921-1E5F-467B-ABB3-6D4024AE954D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FCA3921-1E5F-467B-ABB3-6D4024AE954D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
