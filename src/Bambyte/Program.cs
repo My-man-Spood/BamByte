@@ -48,7 +48,7 @@ namespace Bambyte
         private static IServiceProvider ConfigureServices()
         {
             var map = new ServiceCollection()
-                .AddSingleton(new GiphyWrapper(File.ReadAllText("TokenGiphy.txt")));
+                .AddSingleton(new GiphyWrapper(File.ReadAllText("TokenGiphy.txt").Trim()));
 
             return map.BuildServiceProvider(true);
         }
@@ -83,7 +83,7 @@ namespace Bambyte
         {
             await InitCommands();
 
-            await client.LoginAsync(TokenType.Bot, File.ReadAllText("TokenDiscord.txt"));
+            await client.LoginAsync(TokenType.Bot, File.ReadAllText("TokenDiscord.txt").Trim());
             await client.StartAsync();
 
             await Task.Delay(Timeout.Infinite);
