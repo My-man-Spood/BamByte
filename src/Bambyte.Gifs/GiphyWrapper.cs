@@ -24,7 +24,7 @@ namespace Bambyte.Gifs
 
             var result = await giphy.RandomGif(search);
 
-            return result.Data.FixedWidthSmallUrl;
+            return result.Data.FixedWidthDownsampledUrl;
         }
 
         public string NotFound()
