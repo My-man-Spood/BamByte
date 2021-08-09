@@ -48,7 +48,8 @@ namespace Bambyte
         private static IServiceProvider ConfigureServices()
         {
             var map = new ServiceCollection()
-                .AddSingleton(new GiphyWrapper(File.ReadAllText("TokenGiphy.txt").Trim()));
+                .AddSingleton(new GiphyWrapper(File.ReadAllText("TokenGiphy.txt").Trim()))
+                .AddSingleton(new Random());
 
             return map.BuildServiceProvider(true);
         }
@@ -123,12 +124,13 @@ namespace Bambyte
             await PhpJeTaimes(msg);
         }
 
-        private static async Task PhpJeTaimes(SocketUserMessage msg)
+        private async Task PhpJeTaimes(SocketUserMessage msg)
         {
             var heartEmojis = new string[] { "😍", "😘", "🥰", "❤" };
             if (msg.Content.ToLower().Contains("php"))
             {
-                var emojiIndex = new Random().Next(0, heartEmojis.Length - 1);
+                var random = services.GetRequiredService<Random>();
+                var emojiIndex = random.Next(0, heartEmojis.Length);
                 await msg.AddReactionAsync(new Emoji(heartEmojis[emojiIndex]));
             }
         }
