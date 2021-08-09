@@ -125,9 +125,11 @@ namespace Bambyte
 
         private static async Task PhpJeTaimes(SocketUserMessage msg)
         {
+            var heartEmojis = new string[] { "😍", "😘", "🥰", "❤" };
             if (msg.Content.ToLower().Contains("php"))
             {
-                await msg.AddReactionAsync(new Emoji("♥"));
+                var emojiIndex = new Random().Next(0, heartEmojis.Length - 1);
+                await msg.AddReactionAsync(new Emoji(heartEmojis[emojiIndex]));
             }
         }
 
