@@ -114,9 +114,27 @@ namespace Bambyte
                 return;
             }
 
+            await HandleSpecialCases(msg);
+            await HandleCommands(msg);
+        }
+
+        private async Task HandleSpecialCases(SocketUserMessage msg)
+        {
+            await PhpJeTaimes(msg);
+        }
+
+        private static async Task PhpJeTaimes(SocketUserMessage msg)
+        {
+            if (msg.Content.ToLower().Contains("php"))
+            {
+                await msg.AddReactionAsync(new Emoji("♥"));
+            }
+        }
+
+        private async Task HandleCommands(SocketUserMessage msg)
+        {
             // Create a number to track where the prefix ends and the command begins
             int pos = 0;
-
             if (msg.HasStringPrefix("bb", ref pos) || msg.HasMentionPrefix(client.CurrentUser, ref pos))
             {
                 // Create a Command Context.
