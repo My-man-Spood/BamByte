@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using Bambyte.Gifs;
+using Bambyte.PlanningPoker;
+using Bambyte.PlanningPoker.Repo;
+using Bambyte.PlanningPoker.Repos;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
@@ -41,6 +45,8 @@ namespace Bambyte
             client.Log += Log;
             commandService.Log += Log;
 
+            client.ReactionAdded += ReactionAdded_Event;
+
             services = ConfigureServices();
         }
 
@@ -49,6 +55,7 @@ namespace Bambyte
         {
             var map = new ServiceCollection()
                 .AddSingleton(new GiphyWrapper(File.ReadAllText("TokenGiphy.txt").Trim()))
+                .AddSingleton<IRepo>(new InMemoryRepo())
                 .AddSingleton(new Random());
 
             return map.BuildServiceProvider(true);
@@ -122,6 +129,23 @@ namespace Bambyte
         private async Task HandleSpecialCases(SocketUserMessage msg)
         {
             await PhpJeTaimes(msg);
+        }
+
+        private async Task ReactionAdded_Event(Cacheable<IUserMessage, ulong> arg1, ISocketMessageChannel arg2, SocketReaction arg3)
+        {
+            if (arg3.UserId == client.CurrentUser.Id || arg3.User.Value.IsBot)
+            {
+                return;
+            }
+
+            var user = client.GetUser(arg3.UserId);
+            var privateMessage = await user.SendMessageAsync("yo");
+
+            List<Emoji> emojis = new List<Emoji>() { new Emoji("0️⃣"), new Emoji("1️⃣"), new Emoji("2️⃣"), new Emoji("3️⃣"), new Emoji("5️⃣"), new Emoji("8️⃣"), new Emoji("➕"), new Emoji("🔁") };
+            foreach (var emoji in emojis)
+            {
+                await privateMessage.AddReactionAsync(emoji);
+            }
         }
 
         private async Task PhpJeTaimes(SocketUserMessage msg)
