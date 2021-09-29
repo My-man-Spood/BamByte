@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bambyte.Gifs", "Bambyte.Gifs\Bambyte.Gifs.csproj", "{8FCA3921-1E5F-467B-ABB3-6D4024AE954D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bambyte.InMemoryRepo", "Bambyte.InMemoryRepo\Bambyte.InMemoryRepo.csproj", "{BA2A4E77-4FA3-486C-A209-96E4415D70DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{8FCA3921-1E5F-467B-ABB3-6D4024AE954D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FCA3921-1E5F-467B-ABB3-6D4024AE954D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8FCA3921-1E5F-467B-ABB3-6D4024AE954D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA2A4E77-4FA3-486C-A209-96E4415D70DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA2A4E77-4FA3-486C-A209-96E4415D70DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA2A4E77-4FA3-486C-A209-96E4415D70DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA2A4E77-4FA3-486C-A209-96E4415D70DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
