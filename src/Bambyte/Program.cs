@@ -5,9 +5,7 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using Bambyte.Gifs;
-using Bambyte.PlanningPoker;
-using Bambyte.PlanningPoker.Repo;
-using Bambyte.PlanningPoker.Repos;
+using Bambyte.InMemoryRepo;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
@@ -55,7 +53,7 @@ namespace Bambyte
         {
             var map = new ServiceCollection()
                 .AddSingleton(new GiphyWrapper(File.ReadAllText("TokenGiphy.txt").Trim()))
-                .AddSingleton<IRepo>(new InMemoryRepo())
+                .AddSingleton<IRepo>(new InMemoryDBRepo())
                 .AddSingleton(new Random());
 
             return map.BuildServiceProvider(true);

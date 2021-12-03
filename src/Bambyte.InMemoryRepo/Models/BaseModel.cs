@@ -6,7 +6,7 @@ namespace Bambyte.InMemoryRepo.Models
 {
     public abstract class BaseModel
     {
-        public ulong Id { get; set; }
+        public string Id { get; set; }
 
         public DateTime CreatedAt { get; set; }
 

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Bambyte.PlanningPoker.Models
+namespace Bambyte.InMemoryRepo.Models.PlanningPoker
 {
-    public class UserVote
+    public class UserVote : BaseModel
     {
         public string UserId { get; set; }
 

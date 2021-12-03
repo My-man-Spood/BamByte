@@ -2,19 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Bambyte.PlanningPoker.Models
+namespace Bambyte.InMemoryRepo.Models.PlanningPoker
 {
-    public class Vote
+    public class Vote : BaseModel
     {
         public Vote(string id, ulong messageId, string subject)
         {
-            this.Id = id;
+            base.Id = id;
             this.MessageId = messageId;
             this.Suject = subject;
             this.userVotes = new List<UserVote>();
         }
-
-        public string Id { get; set; }
 
         public ulong MessageId { get; set; }
 
@@ -22,7 +20,7 @@ namespace Bambyte.PlanningPoker.Models
 
         List<UserVote> userVotes;
 
-        public void AddUserVote(ulong messageId, string userId, int value)
+        public void AddUserVote(string userId, int value)
         {
             var userVote = new UserVote()
             {

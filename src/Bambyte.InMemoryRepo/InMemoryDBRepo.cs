@@ -7,11 +7,11 @@ using System.Text;
 
 namespace Bambyte.InMemoryRepo
 {
-    public class InMemoryRepo : IRepo
+    public class InMemoryDBRepo : IRepo
     {
         Dictionary<Type, List<object>> InMemoryArrays;
 
-        public InMemoryRepo()
+        public InMemoryDBRepo()
         {
             InMemoryArrays = new Dictionary<Type, List<object>>();
         }
@@ -40,14 +40,14 @@ namespace Bambyte.InMemoryRepo
                 foreach (var memory in InMemoryArrays[type])
                 {
                     T model = (T)memory;
-                    if (model.Id.ToString() == id)
+                    if (model.Id == id)
                     {
                         return model;
                     }
                 }
             }
 
-            throw new Exception("Object is not in memory.");
+            return null;
         }
 
         public List<T> GetAll<T>() where T : BaseModel
@@ -77,7 +77,7 @@ namespace Bambyte.InMemoryRepo
                 foreach (var memory in InMemoryArrays[type])
                 {                    
                     T model = (T)memory;
-                    if (ids.Contains(model.Id.ToString()))
+                    if (ids.Contains(model.Id))
                     {
                         list.Add(model);
                     }
@@ -96,7 +96,7 @@ namespace Bambyte.InMemoryRepo
                 foreach (var memory in InMemoryArrays[type])
                 {
                     T model = (T)memory;
-                    if (model.Id.ToString() == id)
+                    if (model.Id == id)
                     {
                         InMemoryArrays[type].Remove(model);
                         return true;
@@ -136,7 +136,7 @@ namespace Bambyte.InMemoryRepo
                 for (int i = 0; i < InMemoryArrays[type].Count; i++)
                 {
                     T model = (T)InMemoryArrays[type][i];
-                    if (model.Id.ToString() == id)
+                    if (model.Id == id)
                     {
                         InMemoryArrays[type][i] = modelIn;
                         return true;

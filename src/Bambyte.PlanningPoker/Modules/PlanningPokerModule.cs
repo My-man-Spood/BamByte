@@ -1,4 +1,5 @@
-﻿using Bambyte.PlanningPoker.Repo;
+﻿using Bambyte.InMemoryRepo;
+using Bambyte.InMemoryRepo.Models.PlanningPoker;
 using Discord;
 using Discord.Commands;
 using System;
@@ -28,7 +29,8 @@ namespace Bambyte.PlanningPoker.Modules
             var voteMessage = await ReplyAsync(embed: embed);
             await voteMessage.AddReactionAsync(new Emoji("👍"));
 
-            repo.CreateVoteSubject(voteMessage.Id, votingSubject);
+            var vote = new Vote(Guid.NewGuid().ToString(), voteMessage.Id, votingSubject);
+            repo.Create(vote);
         }
 
         private string FormatMessage(string votingSubject)
