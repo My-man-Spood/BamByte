@@ -22,9 +22,6 @@ namespace Bambyte.GiphyWrapper
         /// <summary>
         /// GIPHY Random lets you add some weirdness to the conversation by returning a single random GIF or Sticker related to the word or phrase entered. If no tag is specified, the GIF or Sticker returned is completely random.
         /// </summary>
-        /// <param name="tag">Filters results by specified tag..</param>
-        /// <param name="rating">Filters results by specified rating. If you do not specify a rating, you will receive results from all possible ratings.</param>
-        /// <param name="randomId">An ID/proxy for a specific user.</param>
         public async Task<SingleResultResponse> RandomAsync(string tag = "", string rating = "", string randomId = "", CancellationToken cancellationToken = default)
         {
             var request = new RestRequest("random");
@@ -39,9 +36,6 @@ namespace Bambyte.GiphyWrapper
         /// <summary>
         /// GIPHY Random lets you add some weirdness to the conversation by returning a single random GIF or Sticker related to the word or phrase entered. If no tag is specified, the GIF or Sticker returned is completely random.
         /// </summary>
-        /// <param name="tag">Filters results by specified tag..</param>
-        /// <param name="rating">Filters results by specified rating. If you do not specify a rating, you will receive results from all possible ratings.</param>
-        /// <param name="randomId">An ID/proxy for a specific user.</param>
         public SingleResultResponse Random(string tag = "", string rating = "", string randomId = "")
         {
             return RandomAsync(tag, rating, randomId).Result;
