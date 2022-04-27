@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Bambyte.GiphyWrapper;
+using Bambyte.GiphyWrapper.Models;
 using Discord;
 using Discord.Commands;
 
@@ -7,34 +9,29 @@ namespace Bambyte.Gifs.Modules
 {
     public class GifModule : ModuleBase<SocketCommandContext>
     {
-        private readonly GiphyWrapper giphyWrapper;
+        private const string LostJohnTravolta = "https://media.giphy.com/media/2vlC9FMLSmqGs/giphy.gif";
+        private readonly GiphyClient giphyClient;
 
-        public GifModule(GiphyWrapper giphyWrapper)
+        public GifModule(GiphyClient giphyWrapper)
         {
-            this.giphyWrapper = giphyWrapper;
+            this.giphyClient = giphyWrapper;
         }
 
         [Command("gif")]
         public async Task SendGif([Remainder]string gifName)
         {
-            string url;
+            SingleResultResponse response = null;
 
             try
             {
-                url = await giphyWrapper.SearchRandomGif(gifName, true);
+                response = await giphyClient.RandomAsync(tag: gifName, rating: GiphyRatings.PG);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                url = giphyWrapper.NotFound();
-                gifName = "404";
+                await ReplyAsync(message: LostJohnTravolta);
             }
 
-            var embed = new EmbedBuilder
-            {
-                Title = gifName,
-                ImageUrl = url,
-            }.Build();
-            await ReplyAsync(embed: embed);
+            await ReplyAsync(embed: new EmbedBuilder().BuildFromGifData(response.Data, gifName));
         }
     }
 }
