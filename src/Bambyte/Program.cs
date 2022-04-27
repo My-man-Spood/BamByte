@@ -4,6 +4,7 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using Bambyte.Gifs;
+using Bambyte.GiphyWrapper;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
@@ -48,7 +49,7 @@ namespace Bambyte
         private static IServiceProvider ConfigureServices()
         {
             var map = new ServiceCollection()
-                .AddSingleton(new GiphyWrapper(File.ReadAllText("TokenGiphy.txt").Trim()))
+                .AddSingleton(new GiphyClient(File.ReadAllText("TokenGiphy.txt").Trim()))
                 .AddSingleton(new Random());
 
             return map.BuildServiceProvider(true);
@@ -92,7 +93,10 @@ namespace Bambyte
 
         private async Task InitCommands()
         {
-            // RegisterAllCommandsInAssembly
+            // make sure gifs is loaded
+            Assembly.Load("Bambyte.Gifs");
+
+            // Register all commands in assemblies
             var assemblies = AppDomain.CurrentDomain.GetAssemblies();
             foreach (var assembly in assemblies)
             {
